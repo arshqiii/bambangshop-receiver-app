@@ -66,18 +66,18 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
     -   [x] Commit: `Implement add function in Notification repository.`
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -95,3 +95,15 @@ This is the place for you to write reflections:
     > Rust tidak mengizinkan mutasi langsung pada variabel static untuk memastikan memory safety dan concurrency safety. Hal ini aman di Java karena Java sendiri memiliki garbage collector dan runtime safety checks yang menangani masalah concurrency secara otomatis sedangkan Rust tidak. Sebagai gantinya, Rust mewajibkan kita menggunakan mekanisme seperti lazy_static! dengan RwLock<> atau Mutex<>, sehingga kita memiliki kontrol eksplisit atas bagaimana data diakses dan dimodifikasi dalam lingkungan multi-threading.
 
 #### Reflection Subscriber-2
+
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+    > Selain tutorial ini saya sempat melihat kode lib.rs yang merupakan bagian dari aplikasi Rocket (framework web di Rust) yang mengatur konfigurasi aplikasi, menyediakan klien HTTP global dengan Reqwest, serta mendefinisikan struktur untuk menangani error. Selain itu juga ada main.rs yang merupakan entry point untuk aplikasi web berbasis Rocket, aplikasi ini mengelola instance global reqwest::Client untuk melakukan HTTP request dan mendaftarkan rute API. 
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+    > Observer pattern mempermudah penambahan subscriber karena setiap subscriber hanya perlu mendaftarkan dirinya ke publisher tanpa mengubah logika utama. Saat ada event baru, semua subscriber yang terdaftar akan otomatis menerima notifikasi. Jika menambahkan lebih dari satu instance Main app, kompleksitas bisa meningkat karena setiap instance perlu memastikan sinkronisasi data antar publisher dan subscriber, yang mungkin memerlukan mekanisme tambahan seperti database terpusat atau message queue.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+    > Belum sempat, namun membuat test akan sangat berguna untuk memastikan sistem berjalan dengan baik ketika pengembangan proyek grup. Ini karena dengan dokumentasi di Postman kita dapat memahami cara menggunakan API dengan jelas dan dapat berbagi Collections yang telah dibuat antar sesama anggota kelompok lainnya.
