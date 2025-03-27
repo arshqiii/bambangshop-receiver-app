@@ -1,4 +1,5 @@
 use std::iter::Product;
+use std::ops::Not;
 
 use rocket::serde::json::Json;
 
@@ -27,4 +28,11 @@ pub fn receive(notification: Json<Notification>) -> Result<Json<Notification>> {
         Ok(f) => Ok(Json::from(f)),
         Err(e) => Err(e)
     };
+}
+#[get("/")]
+pub fn list() -> Result<Json<Vec<String>>> {
+    return match NotificationService::list_messages() {
+        Ok(f) => Ok(Json::from(f)),
+        Err(e) => Err(e)
+    }
 }
